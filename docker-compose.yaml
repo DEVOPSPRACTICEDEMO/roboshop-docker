@@ -1,0 +1,40 @@
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    #external: true # I have created network with this name already
+
+services:
+  mongodb:
+    image: surajpadhi/mongodb:v1
+    container_name: mongodb
+  catalogue:
+    image: surajpadhi/catalogue:v1
+    container_name: catalogue
+    depends_on:
+      - mongodb
+  redis:
+    image: redis:7.0
+    container_name: redis
+  user:
+    image: surajpadhi/user:v1
+    container_name: user
+    depends_on:
+      - redis
+      - mongodb
+  cart:
+    image: surajpadhi/cart:v1
+    container_name: cart
+    depends_on:
+      - redis
+      - catalogue
+  mysql:
+    image: surajpadhi/mysql:v1  
+    container_name: mysql
+  shipping:
+    image: surajpadhi/shipping:v1
+    container_name: shipping
+    depends_on:
+      - mysql
+      - cart
+    
