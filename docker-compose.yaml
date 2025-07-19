@@ -2,7 +2,7 @@ networks:
   default:
     driver: bridge
     name: roboshop
-    external: true # I have created network with this name already
+    #external: true # I have created network with this name already
 
 volumes:
   mongodb:
