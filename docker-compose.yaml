@@ -31,11 +31,6 @@ services:
   mysql:
     image: surajpadhi/mysql:v1  
     container_name: mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=yourpassword
-      - MYSQL_DATABASE=roboshop
-      - MYSQL_USER=roboshop
-      - MYSQL_PASSWORD=roboshop123
   shipping:
     image: surajpadhi/shipping:v1
     container_name: shipping
